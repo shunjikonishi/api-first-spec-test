@@ -20,5 +20,5 @@ object Boot extends App {
 
   val port = sys.env.get("PORT").getOrElse("8080").toInt
 
-  IO(Http) ? Http.Bind(service, interface = "localhost", port = port)
+  IO(Http) ? Http.Bind(service, interface = "0.0.0.0", port = port)
 }
