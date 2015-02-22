@@ -16,14 +16,16 @@ trait LoginController extends HttpService {
   val loginRoute =
     path("auth" / "signin") {
       post {
-        formFields('email, 'password) { (email, password) =>
-          complete {
-            val ret = if (email == "test@test.com" && password == "password") {
-              LoginResponse(200, "OK")
-            } else {
-              LoginResponse(500, "Login failed.")
+        respondWithMediaType(`application/json`) {
+          formFields('email, 'password) { (email, password) =>
+            complete {
+              val ret = if (email == "test@test.com" && password == "password") {
+                LoginResponse(200, "OK")
+              } else {
+                LoginResponse(500, "Login failed.")
+              }
+              Serialization.write(ret)
             }
-            Serialization.write(ret)
           }
         }
       }
