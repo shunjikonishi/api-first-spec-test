@@ -1,5 +1,7 @@
 organization  := "com.example"
 
+name          := "api-first-spec-test"
+
 version       := "0.1"
 
 scalaVersion  := "2.11.2"
