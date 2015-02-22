@@ -23,8 +23,10 @@ class MyServiceActor extends Actor with MyService {
 // this trait defines our service behavior independently from the service actor
 trait MyService extends HttpService 
   with HelloController
+  with LoginController
 {
 
   val myRoute =
-    helloRoute
+    helloRoute ~
+    loginRoute
 }
